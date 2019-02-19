@@ -2,10 +2,12 @@ package com.crystal.light.service;
 
 import com.crystal.light.dao.SysUserMapper;
 import com.crystal.light.entity.SysUser;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author crystalzhao
@@ -18,5 +20,9 @@ public class TestService {
     private SysUserMapper sysUserMapper;
     public void save(SysUser sysUser){
         sysUserMapper.insert(sysUser);
+    }
+    public List<SysUser> selectList(){
+        PageHelper.startPage(0,5,"username asc");
+        return sysUserMapper.findList();
     }
 }

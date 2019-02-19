@@ -68,4 +68,7 @@
       `password` = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="findList" resultMap="BaseResultMap">
+    select * from sys_user
+  </select>
 </mapper>

@@ -21,11 +21,6 @@ public class TestController {
 
     @GetMapping("test")
     public Object test(){
-        SysUser user = new SysUser();
-        user.setId(UUID.randomUUID().toString());
-        user.setUsername("245");
-        user.setPassword("245");
-        testService.save(user);
-        return "hello,world";
+        return testService.selectList();
     }
 }
