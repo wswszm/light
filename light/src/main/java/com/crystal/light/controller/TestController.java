@@ -21,6 +21,6 @@ public class TestController {
 
     @GetMapping("test")
     public Object test(){
-        return testService.selectList();
+        return testService.getRedis();
     }
 }
