@@ -17,6 +17,6 @@ public class TestService {
     @Autowired
     private SysUserMapper sysUserMapper;
     public void save(SysUser sysUser){
-        sysUserMapper.insert(sysUser);
+        sysUserMapper.insertSelective(sysUser);
     }
 }

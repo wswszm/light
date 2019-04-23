@@ -1,9 +1,9 @@
 package com.crystal.light.dao;
 
 import com.crystal.light.entity.SysUser;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public interface SysUserMapper {
     int deleteByPrimaryKey(String id);
 

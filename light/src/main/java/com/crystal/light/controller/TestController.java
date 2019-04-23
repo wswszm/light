@@ -23,7 +23,8 @@ public class TestController {
     public Object test(){
         SysUser user = new SysUser();
         user.setId(UUID.randomUUID().toString());
-        user.setUsername("245");
+        user.setLoginName("245");
+        user.setName("245");
         user.setPassword("245");
         testService.save(user);
         return "hello,world";
