@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -26,7 +27,11 @@ public class TestController {
         user.setLoginName("245");
         user.setName("245");
         user.setPassword("245");
+        user.setCreateBy("1");
+        user.setCreateDate(new Date());
+        user.setUpdateBy("1");
+        user.setUpdateDate(new Date());
         testService.save(user);
-        return "hello,world";
+        return user;
     }
 }
