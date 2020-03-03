@@ -1,2 +1,2 @@
 # light
-My second spring boot project light 
+SpringBoot+Mybatis 框架
