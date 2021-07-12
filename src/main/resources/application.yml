@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-uf64oxscze25y51ulqo.mysql.rds.aliyuncs.com:3306/edu_cloud_10?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    username: qianfanprod
+    password: qianfanprod
+#    url: jdbc:mysql://rm-2zeev7644xgcb269uo.mysql.rds.aliyuncs.com:3306/edu_cloud_10?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+#    username: root
+#    password: Qianfan@20171111
+  data:
+    mongodb:
+#      uri: mongodb://edu_base:123456@39.105.47.83:27017/edu_base
+      uri: mongodb://edu_base:123456@106.14.95.84:27017/edu_base
+mybatis:
+  type-aliases-package: com.crystal.light.entity
+  config-locations: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+server:
+  port: 9003

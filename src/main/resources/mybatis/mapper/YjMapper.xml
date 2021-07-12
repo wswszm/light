@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crystal.light.dao.YjMapper" >
+<resultMap id="fsjl" type="com.crystal.light.entity.YjFsXgjl">
+    <!--@mbg.generated generated on Mon Jul 27 14:43:19 CST 2020.-->
+    <!--@Table yj_fs_xgjl-->
+    <id column="bh" jdbcType="VARCHAR" property="bh" />
+    <result column="yj_xtxx_bh" jdbcType="VARCHAR" property="yjXtxxBh" />
+    <result column="yj_ksxx_bh" jdbcType="VARCHAR" property="yjKsxxBh" />
+    <result column="tmlxbh" jdbcType="VARCHAR" property="tmlxbh" />
+    <result column="ysfs" jdbcType="DECIMAL" property="ysfs" />
+    <result column="xgfs" jdbcType="DECIMAL" property="xgfs" />
+    <result column="xgcs" jdbcType="INTEGER" property="xgcs" />
+    <result column="cjr" jdbcType="VARCHAR" property="cjr" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="xxbj" jdbcType="INTEGER" property="xxbj" />
+    <result column="xqbj" jdbcType="INTEGER" property="xqbj" />
+  </resultMap>
+  <resultMap id="yjksdtk" type="com.crystal.light.entity.YjKsdtk">
+    <!--@mbg.generated generated on Wed Aug 26 09:49:38 CST 2020.-->
+    <!--@Table yj_ksdtk-->
+    <id column="bh" jdbcType="VARCHAR" property="bh" />
+    <result column="edu_xx_bh" jdbcType="VARCHAR" property="eduXxBh" />
+    <result column="yj_ksxx_bh" jdbcType="VARCHAR" property="yjKsxxBh" />
+    <result column="yj_dtk_bh" jdbcType="VARCHAR" property="yjDtkBh" />
+    <result column="yj_ks_bh" jdbcType="VARCHAR" property="yjKsBh" />
+    <result column="yj_ks_sj_bh" jdbcType="VARCHAR" property="yjKsSjBh" />
+    <result column="kszt" jdbcType="VARCHAR" property="kszt" />
+    <result column="sjzdf" jdbcType="DECIMAL" property="sjzdf" />
+    <result column="cjr" jdbcType="VARCHAR" property="cjr" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="gxr" jdbcType="VARCHAR" property="gxr" />
+    <result column="gxsj" jdbcType="TIMESTAMP" property="gxsj" />
+    <result column="scbj" jdbcType="CHAR" property="scbj" />
+    <result column="xxbj" jdbcType="INTEGER" property="xxbj" />
+    <result column="xqbj" jdbcType="INTEGER" property="xqbj" />
+    <result column="kgtdf" jdbcType="DECIMAL" property="kgtdf" />
+    <result column="zgtdf" jdbcType="DECIMAL" property="zgtdf" />
+  </resultMap>
+  <select id="findFsjl" resultMap="fsjl">
+    SELECT * FROM
+    yj_fs_xgjl_6
+    <where>
+        <if test="yjXtxxBh != null and yjXtxxBh != ''">
+        AND yj_xtxx_bh = #{yjXtxxBh}
+        </if>
+        <if test="yjKsxxBh != null and yjKsxxBh != ''">
+        AND yj_ksxx_bh = #{yjKsxxBh}
+        </if>
+    </where>
+    ORDER BY cjsj DESC
+  </select>
+  <select id="checkXsSct" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM
+            yj_task_6 a
+        WHERE
+            a.yj_ks_bh = #{yjKsBh}
+            AND a.xh = #{xh}
+            AND a.zt NOT IN ( '3', '6' )
+    </select>
+
+    <update id="updateSjzdf">
+        UPDATE
+            yj_ksdtk_6 AS ksdtk
+        SET
+            ksdtk.sjzdf = #{zzdf},
+            ksdtk.kgtdf = #{kgtDf},
+            ksdtk.zgtdf = #{zgtDf},
+            ksdtk.gxr = #{userId},
+            ksdtk.gxsj = NOW()
+        WHERE
+            ksdtk.yj_ks_bh = #{yjKsBh}
+        AND ksdtk.yj_ksxx_bh = #{ksxxbh}
+    </update>
+
+    <select id="findKsdtk" resultMap="yjksdtk">
+        SELECT  * from
+        yj_ksdtk_6 where
+        sjzdf &gt;= #{minSjzdf}
+        AND sjzdf &lt; #{maxSjzdf}
+    </select>
+</mapper>

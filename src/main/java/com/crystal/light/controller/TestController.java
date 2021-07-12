@@ -2,11 +2,13 @@ package com.crystal.light.controller;
 
 import com.crystal.light.entity.SysUser;
 import com.crystal.light.service.TestService;
+import com.crystal.light.vo.TestVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -15,6 +17,7 @@ import java.util.UUID;
  * @date 2019/2/18
  */
 @RestController
+@RequestMapping("sheet")
 public class TestController {
 
     @Autowired
@@ -33,5 +36,26 @@ public class TestController {
         user.setUpdateDate(new Date());
         testService.save(user);
         return user;
+    }
+
+    @PostMapping("saveFrontJson")
+    public Object saveFrontJson(@RequestParam String frontJson, @RequestParam String uuid){
+        System.out.println(frontJson);
+        System.out.println(uuid);
+        Map<String ,Object> map = new HashMap<>();
+        map.put("result","success");
+        return map;
+    }
+
+    @PostMapping("testFen")
+    public String testFen(){
+        testService.testFen();
+        return "success";
+    }
+
+    @PostMapping("gaifen")
+    public String gaifen(@RequestParam String yjKsBh){
+        testService.gaifen(yjKsBh);
+        return "success";
     }
 }
