@@ -1,11 +1,13 @@
 package com.crystal.light.controller;
 
 import com.crystal.light.entity.SysUser;
+//import com.crystal.light.kafka.Producer;
 import com.crystal.light.service.TestService;
 import com.crystal.light.vo.TestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,22 +22,17 @@ import java.util.UUID;
 @RequestMapping("sheet")
 public class TestController {
 
+
     @Autowired
     private TestService testService;
+//    @Autowired
+//    private Producer producer;
 
-    @GetMapping("test")
+
+    @GetMapping("testArthas")
     public Object test(){
-        SysUser user = new SysUser();
-        user.setId(UUID.randomUUID().toString());
-        user.setLoginName("245");
-        user.setName("245");
-        user.setPassword("245");
-        user.setCreateBy("1");
-        user.setCreateDate(new Date());
-        user.setUpdateBy("1");
-        user.setUpdateDate(new Date());
-        testService.save(user);
-        return user;
+        String id = testService.testArthas("aaa", "bbb");
+        return id;
     }
 
     @PostMapping("saveFrontJson")
@@ -58,4 +55,21 @@ public class TestController {
         testService.gaifen(yjKsBh);
         return "success";
     }
+
+//    @PostMapping("testKafka")
+//    public String testKafka(){
+//        TestVO vo = new TestVO();
+//        vo.setFrontJson("dasbidabhdiabsda");
+//        vo.setUuid(UUID.randomUUID().toString());
+//        producer.send(vo);
+//        return "success";
+//    }
+
+    public static void main(String[] args) {
+        File file = new File("D:\\workspace\\logs\\spoc\\spoc.log");
+        System.out.println(file.getPath());
+        System.out.println(file.getName());
+    }
+
+
 }

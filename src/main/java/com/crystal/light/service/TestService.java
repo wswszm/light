@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author crystalzhao
@@ -135,6 +136,10 @@ public class TestService {
             }
         }*/
 
+    }
+
+    public String testArthas(String param1,String param2){
+        return UUID.randomUUID().toString();
     }
 
     /*public void totalScore(String xh, String ksxxbh, String yjKsBh, String xxbj, String xqbj, String userId) {
